@@ -3,28 +3,33 @@
 from eez import scpi
 from utime import ticks_ms, ticks_diff
 
+# change the voltage
 def adjust_voltage():
     global voltage, is_on
-    if not is_on:
-        value = scpi('DISP:INP? "Enter Voltage",NUMB,VOLT,0,36,36') # WILL BE SET TO 28-30 IN PROD / NOT USER-SET
-        if not value is None:
-            voltage = value
-    
+    value = scpi('DISP:INP? "Enter Voltage",NUMB,VOLT,0,40,0')
+    if not value is None:
+        voltage = value
+        if is_on:
+            scpi("VOLT " + str(voltage))
+
+# change the current
 def adjust_current():
     global current, is_on
-    value = scpi('DISP:INP? "Enter Current",NUMB,AMPE,0.005,0.025,0.005')
+    value = scpi('DISP:INP? "Enter Current",NUMB,AMPE,0,5,0')
     if not value is None:
         current = value
         if is_on:
             scpi("CURR " + str(current))
-         
+
+# change timer start value
 def adjust_timer():
     global timer
     if not is_on:
-        value = scpi('DISP:INP? "Enter Seconds",NUMB,SECO,0.0,10.0,0.0')
+        value = scpi('DISP:INP? "Enter Seconds",NUMB,SECO,0.0,60.0,0.0')
         if not value is None:
             timer = value
-    
+
+# reset timer
 def reset_timer():
     global countdown, timer
     countdown = timer
@@ -32,7 +37,6 @@ def reset_timer():
 def start():
     global voltage, current, is_on, status_text, countdown, timer, use_timer, prev_tick
     scpi("INST CH1")
-    scpi("SYST:BEEP")
     if not is_on:
         try:
             scpi("OUTP ON")
@@ -58,9 +62,9 @@ def start():
 def main():
     # defaults
     global voltage, current, is_on, status_text, timer, current_draw, countdown, use_timer, voltage_actual, timer_on
-    voltage = 25.0
+    voltage = 0.0
     voltage_actual = 0.0
-    current = 0.005
+    current = 0.0
     current_draw = 0.0
     timer = 0.0
     countdown = 0.0
