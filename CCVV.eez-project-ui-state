@@ -180,6 +180,7 @@
               "type": "tabset",
               "id": "EDITORS",
               "weight": 60,
+              "selected": 1,
               "enableDeleteWhenEmpty": false,
               "enableClose": false,
               "children": [
@@ -243,8 +244,7 @@
                     "_owner": null
                   }
                 }
-              ],
-              "active": true
+              ]
             },
             {
               "type": "row",
@@ -264,7 +264,8 @@
                       "enableClose": false,
                       "icon": "svg:properties"
                     }
-                  ]
+                  ],
+                  "active": true
                 },
                 {
                   "type": "tabset",
@@ -990,7 +991,11 @@
       }
     },
     "[CCVV.eez-project]:/userPages/0[flow-state]": {
-      "selection": {},
+      "selection": {
+        "2": {
+          "$selected": true
+        }
+      },
       "transform": {
         "translate": {
           "x": -268.23748779296875,
