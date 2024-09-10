@@ -1,0 +1,610 @@
+{
+  "objID": "6666cd76-f969-5646-9e7b-e39d750cc7d9",
+  "settings": {
+    "objID": "e007d988-9fba-797d-72e9-efc33ca6d05c",
+    "general": {
+      "objID": "fd434352-2277-c4a8-e87e-e96cfcbf2305",
+      "projectVersion": "v2",
+      "projectType": "resource",
+      "masterProject": ".\\modular-psu-firmware.eez-project",
+      "extensions": [],
+      "imports": [],
+      "displayBorderRadius": 0,
+      "colorFormat": "BGR",
+      "resourceFiles": []
+    },
+    "build": {
+      "objID": "72794a43-a0fc-13c2-7eb5-67dd952141a4",
+      "configurations": [
+        {
+          "objID": "bba0546c-06b8-604d-c43e-ecf1963e7492",
+          "name": "Default"
+        }
+      ],
+      "files": [],
+      "lvglInclude": "lvgl/lvgl.h",
+      "generateSourceCodeForEezFramework": false,
+      "compressFlowDefinition": false,
+      "executionQueueSize": 1000,
+      "expressionEvaluatorStackSize": 20
+    }
+  },
+  "variables": {
+    "objID": "c6c71e16-53e1-217f-d03b-cef56c6b037a",
+    "globalVariables": [
+      {
+        "objID": "be7c0b43-6285-427e-d2cf-8d1926bda61d",
+        "name": "voltage",
+        "type": "float",
+        "defaultValue": "0",
+        "persistent": false,
+        "native": false
+      },
+      {
+        "objID": "e8afdce6-86ab-4f68-c6ae-36c7b4eb1022",
+        "name": "current",
+        "type": "float",
+        "defaultValue": "0",
+        "persistent": false,
+        "native": false
+      },
+      {
+        "objID": "e2c8ca3a-b78f-4772-e6f9-52923eb0b32c",
+        "name": "is_on",
+        "type": "boolean",
+        "defaultValue": "false",
+        "persistent": false,
+        "native": false
+      },
+      {
+        "objID": "4ed8e607-53e7-482a-83c9-f89b77788d58",
+        "name": "status_text",
+        "type": "string",
+        "defaultValue": "\"Start\"",
+        "persistent": false,
+        "native": false
+      },
+      {
+        "objID": "9a56136b-3f5b-4404-bbd7-b700a359c5fd",
+        "name": "current_draw",
+        "type": "float",
+        "defaultValue": "0",
+        "persistent": false,
+        "native": false
+      },
+      {
+        "objID": "2706a356-b790-4012-b0c8-e5863967e8e8",
+        "name": "changer",
+        "type": "integer",
+        "defaultValue": "0",
+        "persistent": false,
+        "native": false
+      },
+      {
+        "objID": "555a7ada-ec97-4b9f-dea2-ce048b3df8b6",
+        "name": "timer",
+        "type": "float",
+        "defaultValue": "0",
+        "persistent": false,
+        "native": false
+      },
+      {
+        "objID": "082f56da-3d68-41bb-8a14-5edf7fea4657",
+        "name": "countdown",
+        "type": "float",
+        "defaultValue": "0",
+        "persistent": false,
+        "native": false
+      },
+      {
+        "objID": "ffd81145-20a8-47c6-89bb-55fac7ce6aa6",
+        "name": "voltage_actual",
+        "type": "float",
+        "defaultValue": "0",
+        "persistent": false,
+        "native": false
+      }
+    ],
+    "structures": [],
+    "enums": []
+  },
+  "actions": [
+    {
+      "objID": "f786d5aa-58da-ab24-5b4f-84652888c902",
+      "components": [],
+      "connectionLines": [],
+      "localVariables": [],
+      "name": "close_script"
+    },
+    {
+      "objID": "93439db1-accc-4aff-9c52-0785e56ec3da",
+      "components": [],
+      "connectionLines": [],
+      "localVariables": [],
+      "name": "adjust_voltage"
+    },
+    {
+      "objID": "40828b61-f06b-4253-d226-78a3eb765f49",
+      "components": [],
+      "connectionLines": [],
+      "localVariables": [],
+      "name": "adjust_current"
+    },
+    {
+      "objID": "b2fc4b36-fe8b-48ed-ade7-835e0a10fca9",
+      "components": [],
+      "connectionLines": [],
+      "localVariables": [],
+      "name": "adjust_timer"
+    },
+    {
+      "objID": "4c1ab10a-5541-4f06-f668-e39d1076d8a0",
+      "components": [],
+      "connectionLines": [],
+      "localVariables": [],
+      "name": "reset_timer"
+    },
+    {
+      "objID": "0dde0153-4fd9-4bbe-c08e-31ad9e877e3b",
+      "components": [],
+      "connectionLines": [],
+      "localVariables": [],
+      "name": "start"
+    }
+  ],
+  "userPages": [
+    {
+      "objID": "4056c471-a82f-f00e-c80e-c8e49fee3bb7",
+      "components": [
+        {
+          "objID": "dd4888a8-6ddf-bda8-ee39-329ba1088f6e",
+          "type": "Container",
+          "left": 0,
+          "top": 240,
+          "width": 65,
+          "height": 32,
+          "customInputs": [],
+          "customOutputs": [],
+          "resizing": {
+            "pinToEdge": 11,
+            "fixSize": 0
+          },
+          "style": {
+            "objID": "7e9248a4-65d7-7e9e-b307-1e128e85390f",
+            "useStyle": "default",
+            "conditionalStyles": [],
+            "childStyles": []
+          },
+          "timeline": [],
+          "eventHandlers": [],
+          "widgets": [
+            {
+              "objID": "1ded1ea8-5273-b086-05f8-91c05ba3eef6",
+              "type": "Text",
+              "left": 0,
+              "top": 0,
+              "width": 64,
+              "height": 32,
+              "customInputs": [],
+              "customOutputs": [],
+              "style": {
+                "objID": "8e88ba7e-d66b-2797-12cd-23c95ecfba9e",
+                "useStyle": "status_icon_enabled",
+                "conditionalStyles": [],
+                "childStyles": []
+              },
+              "timeline": [],
+              "eventHandlers": [
+                {
+                  "objID": "a7828b1d-9b14-bdec-276a-f68cf289b340",
+                  "eventName": "CLICKED",
+                  "handlerType": "action",
+                  "action": "close_script",
+                  "userData": 0
+                }
+              ],
+              "text": "E",
+              "focusStyle": {
+                "objID": "bd2342ae-85fc-71ea-1c48-9d130dcfa2d4",
+                "useStyle": "default",
+                "conditionalStyles": [],
+                "childStyles": []
+              }
+            }
+          ],
+          "layout": "static"
+        },
+        {
+          "objID": "6b307dd8-54bc-4723-c0ea-77e79734fbdc",
+          "type": "TextWidget",
+          "left": 19,
+          "top": 27,
+          "width": 75,
+          "height": 32,
+          "customInputs": [],
+          "customOutputs": [],
+          "style": {
+            "objID": "351f9149-d598-491e-cc65-cb54d14eb21d",
+            "useStyle": "default_S",
+            "conditionalStyles": [],
+            "childStyles": []
+          },
+          "timeline": [],
+          "eventHandlers": [],
+          "text": "Voltage:",
+          "focusStyle": {
+            "objID": "1ddefc6b-b4f5-4608-9da1-ca98dd49b546",
+            "useStyle": "default",
+            "conditionalStyles": [],
+            "childStyles": []
+          }
+        },
+        {
+          "objID": "00427047-bb5d-42e1-c873-05262f43403b",
+          "type": "TextWidget",
+          "left": 99,
+          "top": 18,
+          "width": 170,
+          "height": 50,
+          "customInputs": [],
+          "customOutputs": [],
+          "data": "voltage",
+          "style": {
+            "objID": "33a5a079-c1f5-44ff-caf2-21b314ae880a",
+            "useStyle": "button_M",
+            "conditionalStyles": [],
+            "childStyles": [],
+            "alignHorizontal": "left",
+            "backgroundColor": "#797979",
+            "activeColor": "#797979",
+            "focusBackgroundColor": "#000000"
+          },
+          "timeline": [],
+          "eventHandlers": [
+            {
+              "objID": "bc95253f-c109-4739-b25c-9d984ee822e8",
+              "eventName": "CLICKED",
+              "handlerType": "action",
+              "action": "adjust_voltage",
+              "userData": 0
+            }
+          ],
+          "text": "",
+          "focusStyle": {
+            "objID": "2aa0f490-ecb3-4c4e-d2ab-a891ae0c856b",
+            "useStyle": "default",
+            "conditionalStyles": [],
+            "childStyles": []
+          }
+        },
+        {
+          "objID": "b3f8aa7f-d0d2-4e01-e353-67ad29037b52",
+          "type": "TextWidget",
+          "left": 17,
+          "top": 81,
+          "width": 78,
+          "height": 32,
+          "customInputs": [],
+          "customOutputs": [],
+          "style": {
+            "objID": "07eaa1c7-1d59-4250-991a-b83768d33441",
+            "useStyle": "default_S",
+            "conditionalStyles": [],
+            "childStyles": []
+          },
+          "timeline": [],
+          "eventHandlers": [],
+          "text": "Current:",
+          "focusStyle": {
+            "objID": "8840e1c9-38e7-4cb0-9347-f1172865e1cb",
+            "useStyle": "default",
+            "conditionalStyles": [],
+            "childStyles": []
+          }
+        },
+        {
+          "objID": "0d83748c-7889-489a-8c4a-38a4048ef0b6",
+          "type": "TextWidget",
+          "left": 99,
+          "top": 73,
+          "width": 170,
+          "height": 50,
+          "customInputs": [],
+          "customOutputs": [],
+          "data": "current",
+          "style": {
+            "objID": "75a83da1-bc9c-474f-a277-3fd23691292d",
+            "useStyle": "button_M",
+            "conditionalStyles": [],
+            "childStyles": [],
+            "alignHorizontal": "left",
+            "backgroundColor": "#797979",
+            "activeColor": "#797979"
+          },
+          "timeline": [],
+          "eventHandlers": [
+            {
+              "objID": "f88d6c5c-b387-4ac9-d5ad-64e38c6e8370",
+              "eventName": "CLICKED",
+              "handlerType": "action",
+              "action": "adjust_current",
+              "userData": 0
+            }
+          ],
+          "focusStyle": {
+            "objID": "5eb7ea77-4467-4541-fb1c-9e58ef91dd35",
+            "useStyle": "default",
+            "conditionalStyles": [],
+            "childStyles": []
+          }
+        },
+        {
+          "objID": "9f1372e6-e5c9-497f-a363-9e96986d35a4",
+          "type": "TextWidget",
+          "left": 99,
+          "top": 128,
+          "width": 170,
+          "height": 50,
+          "customInputs": [],
+          "customOutputs": [],
+          "data": "timer",
+          "style": {
+            "objID": "f03a7a59-efef-4bf6-ed1b-fdb78f8f0b4a",
+            "useStyle": "button_M",
+            "conditionalStyles": [],
+            "childStyles": [],
+            "alignHorizontal": "left",
+            "backgroundColor": "#797979",
+            "activeColor": "#797979"
+          },
+          "timeline": [],
+          "eventHandlers": [
+            {
+              "objID": "9212d66f-45d7-4d60-d000-58ffa32f06c6",
+              "eventName": "CLICKED",
+              "handlerType": "action",
+              "action": "adjust_timer",
+              "userData": 0
+            }
+          ],
+          "focusStyle": {
+            "objID": "696dd115-21ea-4403-e665-afca3f1c9ec1",
+            "useStyle": "default",
+            "conditionalStyles": [],
+            "childStyles": []
+          }
+        },
+        {
+          "objID": "0ba2c540-af66-40f7-e597-f453cfc1d46e",
+          "type": "TextWidget",
+          "left": 29,
+          "top": 133,
+          "width": 68,
+          "height": 32,
+          "customInputs": [],
+          "customOutputs": [],
+          "data": "timer",
+          "style": {
+            "objID": "933fea23-3b36-457c-f63d-ef69145701ec",
+            "useStyle": "default_S",
+            "conditionalStyles": [],
+            "childStyles": []
+          },
+          "timeline": [],
+          "eventHandlers": [],
+          "text": "Timer:",
+          "focusStyle": {
+            "objID": "ec39840f-c34c-4b7e-e340-e3994a543396",
+            "useStyle": "default",
+            "conditionalStyles": [],
+            "childStyles": []
+          }
+        },
+        {
+          "objID": "8d729ee8-0e08-4899-b14b-64d3c6d4e059",
+          "type": "TextWidget",
+          "left": 284,
+          "top": 104,
+          "width": 179,
+          "height": 32,
+          "customInputs": [],
+          "customOutputs": [],
+          "style": {
+            "objID": "f74dad3c-65d1-4860-f7e1-8adefb0ee526",
+            "useStyle": "default_S",
+            "conditionalStyles": [],
+            "childStyles": []
+          },
+          "timeline": [],
+          "eventHandlers": [],
+          "text": "Current Draw:",
+          "focusStyle": {
+            "objID": "7a23f1ff-73a7-4b45-eb02-295d47a82280",
+            "useStyle": "default",
+            "conditionalStyles": [],
+            "childStyles": []
+          }
+        },
+        {
+          "objID": "0c32a409-6127-468c-9f51-8a6061dd7697",
+          "type": "TextWidget",
+          "left": 301,
+          "top": 137,
+          "width": 145,
+          "height": 32,
+          "customInputs": [],
+          "customOutputs": [],
+          "data": "current_draw",
+          "style": {
+            "objID": "8e623cd5-4dcb-4687-fde3-2084ad699306",
+            "useStyle": "default",
+            "conditionalStyles": [],
+            "childStyles": []
+          },
+          "timeline": [],
+          "eventHandlers": [],
+          "focusStyle": {
+            "objID": "5d18465c-fbe3-4524-9c07-04e2ff9e0b21",
+            "useStyle": "default",
+            "conditionalStyles": [],
+            "childStyles": []
+          }
+        },
+        {
+          "objID": "2c086729-1d96-4d3d-8c70-db34cf7afea4",
+          "type": "TextWidget",
+          "left": 285,
+          "top": 178,
+          "width": 179,
+          "height": 32,
+          "customInputs": [],
+          "customOutputs": [],
+          "style": {
+            "objID": "a919195b-34c0-4a00-e542-11aac1e7bd73",
+            "useStyle": "default_S",
+            "conditionalStyles": [],
+            "childStyles": []
+          },
+          "timeline": [],
+          "eventHandlers": [],
+          "text": "Timer:",
+          "focusStyle": {
+            "objID": "078fdbda-d0b0-41cc-baae-74de1241214a",
+            "useStyle": "default",
+            "conditionalStyles": [],
+            "childStyles": []
+          }
+        },
+        {
+          "objID": "791cc355-f8ec-4065-e37c-6a312ff40595",
+          "type": "TextWidget",
+          "left": 322,
+          "top": 210,
+          "width": 104,
+          "height": 32,
+          "customInputs": [],
+          "customOutputs": [],
+          "data": "countdown",
+          "style": {
+            "objID": "a8bc82d1-74d7-4c2a-d020-2e7d3453a5ee",
+            "useStyle": "default",
+            "conditionalStyles": [],
+            "childStyles": []
+          },
+          "timeline": [],
+          "eventHandlers": [],
+          "text": "",
+          "focusStyle": {
+            "objID": "ffff867b-330e-41b2-9f8f-8db9e39d36fc",
+            "useStyle": "default",
+            "conditionalStyles": [],
+            "childStyles": []
+          }
+        },
+        {
+          "objID": "cc1af3c8-c801-46c0-f668-3460332e4d31",
+          "type": "TextWidget",
+          "left": 150,
+          "top": 199,
+          "width": 113,
+          "height": 52,
+          "customInputs": [],
+          "customOutputs": [],
+          "data": "status_text",
+          "visible": "",
+          "style": {
+            "objID": "c06d66d5-a5b8-4fbe-953d-c836e467d37e",
+            "useStyle": "button_M",
+            "conditionalStyles": [],
+            "childStyles": []
+          },
+          "timeline": [],
+          "eventHandlers": [
+            {
+              "objID": "116b7a42-f6db-4b7f-cc2f-2004d5c7f826",
+              "eventName": "CLICKED",
+              "handlerType": "action",
+              "action": "start",
+              "userData": 0
+            }
+          ],
+          "text": "",
+          "focusStyle": {
+            "objID": "e6ed99ac-8919-4976-9e5c-40f62c83592e",
+            "useStyle": "button_M",
+            "conditionalStyles": [],
+            "childStyles": []
+          }
+        },
+        {
+          "objID": "54296050-b9a2-4ee3-908f-7b3e5bcec8dc",
+          "type": "TextWidget",
+          "left": 301,
+          "top": 59,
+          "width": 145,
+          "height": 32,
+          "customInputs": [],
+          "customOutputs": [],
+          "data": "voltage_actual",
+          "style": {
+            "objID": "b75fba7c-c179-4024-a8ce-203a91317728",
+            "useStyle": "default",
+            "conditionalStyles": [],
+            "childStyles": []
+          },
+          "timeline": [],
+          "eventHandlers": [],
+          "text": "",
+          "focusStyle": {
+            "objID": "b34abef6-2399-492d-f57b-e3add0b7f191",
+            "useStyle": "default",
+            "conditionalStyles": [],
+            "childStyles": []
+          }
+        },
+        {
+          "objID": "e2886844-6004-48ed-89df-68b14e55722e",
+          "type": "TextWidget",
+          "left": 284,
+          "top": 27,
+          "width": 179,
+          "height": 32,
+          "customInputs": [],
+          "customOutputs": [],
+          "style": {
+            "objID": "df79f204-3145-4a71-a24c-1b7a59e1e030",
+            "useStyle": "default_S",
+            "conditionalStyles": [],
+            "childStyles": []
+          },
+          "timeline": [],
+          "eventHandlers": [],
+          "text": "Actual voltage:",
+          "focusStyle": {
+            "objID": "a0a70a81-99a8-4339-9945-6c83e90fb718",
+            "useStyle": "default",
+            "conditionalStyles": [],
+            "childStyles": []
+          }
+        }
+      ],
+      "connectionLines": [],
+      "localVariables": [],
+      "name": "Main",
+      "left": 0,
+      "top": 0,
+      "width": 480,
+      "height": 272
+    }
+  ],
+  "userWidgets": [],
+  "styles": [],
+  "fonts": [],
+  "bitmaps": [],
+  "micropython": {
+    "objID": "b45b2228-d8c5-05a4-86e8-bafbd3d42829",
+    "code": "# Constant current, variable voltage\r\n\r\nfrom eez import scpi\r\nfrom utime import ticks_ms, ticks_diff\r\n\r\n# change the voltage\r\ndef adjust_voltage():\r\n    global voltage, is_on\r\n    value = scpi('DISP:INP? \"Enter Voltage\",NUMB,VOLT,0,36,36')\r\n    if not value is None:\r\n        voltage = value\r\n        if is_on:\r\n            scpi(\"VOLT \" + str(voltage))\r\n\r\n# change the current\r\ndef adjust_current():\r\n    global current, is_on\r\n    value = scpi('DISP:INP? \"Enter Current\",NUMB,AMPE,0.005,0.025,0.005')\r\n    if not value is None:\r\n        current = value\r\n        if is_on:\r\n            scpi(\"CURR \" + str(current))\r\n\r\n# change timer start value\r\ndef adjust_timer():\r\n    global timer\r\n    if not is_on:\r\n        value = scpi('DISP:INP? \"Enter Seconds\",NUMB,SECO,0.0,10.0,0.0')\r\n        if not value is None:\r\n            timer = value\r\n\r\n# reset timer\r\ndef reset_timer():\r\n    global countdown, timer\r\n    countdown = timer\r\n    \r\ndef start():\r\n    global voltage, current, is_on, status_text, countdown, timer, use_timer, prev_tick\r\n    scpi(\"INST CH1\")\r\n    if not is_on:\r\n        try:\r\n            scpi(\"OUTP ON\")\r\n        except:\r\n            scpi('DISP:ERROR \"External voltage detected!\"')\r\n        else:\r\n            scpi(\"VOLT \" + str(voltage))\r\n            scpi(\"CURR \" + str(current))\r\n            is_on = True\r\n            status_text = \"Stop\"\r\n            if timer > 0.0:\r\n                countdown = timer\r\n                use_timer = True\r\n            else:\r\n                use_timer = False\r\n    else:\r\n        scpi(\"OUTP OFF\")\r\n        is_on = False\r\n        status_text = \"Start\"\r\n        countdown = 0.0\r\n        use_timer = False\r\n\r\ndef main():\r\n    # defaults\r\n    global voltage, current, is_on, status_text, timer, current_draw, countdown, use_timer, voltage_actual, timer_on\r\n    voltage = 25.0\r\n    voltage_actual = 0.0\r\n    current = 0.005\r\n    current_draw = 0.0\r\n    timer = 0.0\r\n    countdown = 0.0\r\n    prev_tick = -5.1\r\n    use_timer = False\r\n    is_on = False\r\n    timer_on = False\r\n    status_text = \"Start\"\r\n    \r\n    # Save state and set in known (default) state.  \r\n    scpi(\"*SAV 10\")\r\n    scpi(\"MEM:STATE:FREEZE ON\")\r\n    scpi(\"*RST\")\r\n    \r\n    # From now on we always restore the state in case of an error.  \r\n    try:\r\n        scpi(\"DISP:DIAL:OPEN \\\"Scripts/CCVV.res\\\"\" )\r\n        scpi('INST CH1')\r\n        while True:\r\n            # main loop\r\n            # update measurements\r\n            if is_on:\r\n                current_draw = float(scpi('MEAS:CURR? CH1'))\r\n                voltage_actual = float(scpi('MEAS? CH1'))\r\n                \r\n                if current_draw > 0.001:\r\n                    timer_on = True\r\n                else:\r\n                    timer_on = False\r\n                    reset_timer()\r\n                \r\n                if prev_tick > -5.0 and use_timer and timer_on:\r\n                    countdown -= ticks_diff(ticks_ms(), prev_tick) * 0.001\r\n                prev_tick = ticks_ms()\r\n            else:\r\n                current_draw = 0.0\r\n                voltage_actual = voltage\r\n                prev_tick = -5.1\r\n                timer_on = False\r\n                \r\n            # shut off if timer ends    \r\n            if is_on and countdown < 0.0:\r\n                start()\r\n                \r\n            # update displays\r\n            scpi('DISP:DIAL:DATA \"voltage\",FLOAT,VOLT,' + str(voltage))\r\n            scpi('DISP:DIAL:DATA \"voltage_actual\",FLOAT,VOLT,' + str(voltage_actual))\r\n            scpi('DISP:DIAL:DATA \"current\",FLOAT,AMPE,' + str(current))\r\n            scpi('DISP:DIAL:DATA \"current_draw\",FLOAT,AMPE,' + str(current_draw))\r\n            scpi('DISP:DIAL:DATA \"timer\",FLOAT,SECO,' + str(timer))\r\n            scpi('DISP:DIAL:DATA \"countdown\",FLOAT,SECO,' + str(countdown))\r\n            scpi('DISP:DIAL:DATA \"status_text\",STR,' + status_text)\r\n            \r\n            # parse actions\r\n            action = scpi(\"DISP:DIALOG:ACTION? 0.1\")\r\n            if action == \"adjust_voltage\":\r\n                adjust_voltage()\r\n            elif action == \"adjust_current\":\r\n                adjust_current()\r\n            elif action == \"adjust_timer\":\r\n                adjust_timer()\r\n            elif action == \"start\":\r\n                start()\r\n            elif action == \"reset_timer\":\r\n                reset_timer()\r\n            elif action == \"close_script\" or action == 0:\r\n                break\r\n      \r\n    finally:\r\n        # Turn off channels, etc.\r\n        scpi(\"OUTP 0\")\r\n        scpi(\"DISP:DIAL:CLOSE\")\r\n        scpi(\"*RCL 10\")\r\n        scpi(\"MEM:STATE:FREEZE OFF\")\r\n\r\nmain()\r\n"
+  },
+  "colors": [],
+  "themes": []
+}
